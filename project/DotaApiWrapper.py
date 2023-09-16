@@ -26,3 +26,9 @@ class DotaAPIWrapper:
     
     def get_constants(self):
         return fetch_response(API_BASE.format(f"constants", self.api_key))
+
+    def get_hero_matchups(self, hero_id:int):
+        return fetch_response(API_BASE.format(f"heroes/{hero_id}/matchups", self.api_key))
+
+    def get_hero_items(self, hero_id:int):
+        return fetch_response(API_BASE.format(f"heroes/{hero_id}/itemPopularity", self.api_key))
