@@ -1,5 +1,6 @@
 *.config
-project/assetts/images/*.png
+project/assetts/*/*
+!project/assetts/*/.gitkeep
 *.ipynb_checkpoints
 __pycache__
 dotaEnv
