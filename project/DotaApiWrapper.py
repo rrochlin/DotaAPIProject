@@ -4,9 +4,9 @@ from pickle import dump, load
 from os import getcwd
 from pathlib import Path
 
-API_BASE = r"https://api.opendota.com/api/{}?api_key={}"
+API_BASE = r"https://api.opendota.com/api/{}{}"
 
-def fetch_response(request):
+def fetch_response(request) -> Response:
     for _ in range(3):
         response = get(request)
         if (response.status_code == 200):
@@ -15,9 +15,9 @@ def fetch_response(request):
     raise Exception("api call failed")
 
 class DotaAPIWrapper:
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.heroes = self.get_heroes()
+    def __init__(self, api_key: str=None, refresh_heroes: bool=False):
+        self.api_key = r"api_key={}".format(api_key) if api_key else ""
+        self.heroes = self.get_heroes(refresh_heroes)
         
     def get_player(self, player_id) -> Response:
         return fetch_response(API_BASE.format(f"players/{player_id}", self.api_key))
