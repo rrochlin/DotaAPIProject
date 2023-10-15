@@ -16,7 +16,7 @@ def get_hero_info(home: Path) -> list:
 
 def download_image(info: dict, home: Path) -> None:
     r = get(f"https://cdn.dota2.com/{info['img']}", stream=True)
-    file = Path(home, f"project/assetts/images/{info['localized_name']}.png")
+    file = Path(home, f"project/assets/images/{info['localized_name']}.png")
     with open(file, "wb") as out_file:
         copyfileobj(r.raw, out_file)
 

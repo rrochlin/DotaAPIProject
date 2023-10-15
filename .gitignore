@@ -4,3 +4,4 @@ project/assetts/*/*
 *.ipynb_checkpoints
 __pycache__
 dotaEnv
+tmp.*
